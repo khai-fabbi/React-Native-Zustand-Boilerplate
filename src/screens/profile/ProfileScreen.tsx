@@ -24,7 +24,7 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
       <Text h1 color={colors.text}>
         Profile
       </Text>
-      <Text className="mt-10">Quang Khai</Text>
+      <Text>Quang Khai</Text>
       <View style={styles.userContainer}>
         <Text>{userData?.name}</Text>
         <Text>{userData?.email}</Text>
