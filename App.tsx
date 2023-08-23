@@ -7,6 +7,7 @@ import SplashScreen from "react-native-splash-screen";
  */
 import Navigation from "./src/navigation";
 import { isAndroid } from "@freakycoder/react-native-helpers";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 LogBox.ignoreAllLogs();
 
@@ -27,9 +28,11 @@ const App = () => {
   }, [scheme, isDarkMode]);
 
   return (
-    <>
-      <Navigation />
-    </>
+    <SafeAreaProvider>
+      <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
+        <Navigation />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 

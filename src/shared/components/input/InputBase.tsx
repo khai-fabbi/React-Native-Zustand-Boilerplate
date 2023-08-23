@@ -55,11 +55,18 @@ const createStyles = (theme: ExtendedTheme) => {
       borderWidth: 1,
       backgroundColor: colors.white,
       color: colors.text,
-      paddingHorizontal: 25,
+      paddingHorizontal: 24,
       paddingVertical: 15,
       borderRadius: 10,
-      elevation: 10,
-      shadowColor: "black",
+      shadowColor: colors.black,
+      shadowOffset: {
+        width: 0,
+        height: 1,
+      },
+      shadowOpacity: 0.22,
+      shadowRadius: 2.22,
+
+      elevation: 3,
     },
     iconRight: {
       padding: 12,

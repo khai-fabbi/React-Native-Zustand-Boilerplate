@@ -6,6 +6,7 @@
     "@freakycoder/react-native-bounceable": "^1.0.3",
     "@freakycoder/react-native-custom-text": "0.1.2",
     "@freakycoder/react-native-helpers": "^2.0.2",
+    "@react-native-community/checkbox": "^0.5.16",
     "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",

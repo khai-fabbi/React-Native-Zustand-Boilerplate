@@ -1,25 +1,52 @@
 import { ExtendedTheme } from "@react-navigation/native";
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 export default (theme: ExtendedTheme) => {
   const { colors } = theme;
-  const { width } = Dimensions.get("window");
   return StyleSheet.create({
     container: {
       flex: 1,
       alignItems: "center",
-      backgroundColor: colors.background,
     },
     header: {
-      width: width * 0.9,
+      width: "100%",
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "space-between",
+      columnGap: 24,
+    },
+    inputWrapper: {
+      flexGrow: 1,
+      position: "relative",
+    },
+    inputCustom: {
+      paddingRight: 48,
+      borderRadius: 9999,
+      backgroundColor: colors.white,
+      borderColor: colors.transparent,
+      shadowColor: colors.black,
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,
+
+      elevation: 4,
     },
     profilePicImageStyle: {
-      height: 50,
-      width: 50,
-      borderRadius: 30,
+      height: 40,
+      width: 40,
+      borderRadius: 9999,
+    },
+    btnSearch: {
+      position: "absolute",
+      right: 8,
+      top: 8,
+      paddingHorizontal: 14,
+      paddingVertical: 8,
+      backgroundColor: colors.primary,
+      alignItems: "center",
+      borderRadius: 9999,
     },
   });
 };

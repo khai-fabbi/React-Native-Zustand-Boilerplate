@@ -17,7 +17,8 @@ import DetailScreen from "@screens/detail/DetailScreen";
 import ProfileScreen from "@screens/profile/ProfileScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
 import ListCard from "@screens/list/ListCard";
-import SignIn from "@screens/Account/SignUp";
+import SignIn from "@screens/Account/SignIn";
+import SignUp from "@screens/Account/SignUp";
 
 // ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
@@ -109,6 +110,7 @@ const Navigation = () => {
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen name={SCREENS.LOGIN} component={SignIn} />
+        <Stack.Screen name={SCREENS.SIGNUP} component={SignUp} />
         <Stack.Screen name={SCREENS.TAB} component={TabNavigation} />
         <Stack.Screen name={SCREENS.DETAIL}>
           {(props) => <DetailScreen {...props} />}

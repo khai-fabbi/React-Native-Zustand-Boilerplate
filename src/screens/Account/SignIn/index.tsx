@@ -1,24 +1,23 @@
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import React, { useMemo, useState } from "react";
 import { useTheme } from "@react-navigation/native";
-import createStyles from "./SignUp.style";
+import createStyles from "./SignIn.style";
 import { LogoPrimary } from "@shared-components/common";
 import { EyeIcon, EyeOffIcon } from "@shared-components/icons";
 import { InputBase } from "@shared-components/input";
 import { ButtonBase } from "@shared-components/button";
 import { SCREENS } from "@shared-constants";
-import { ButtonLoginSocial, CheckboxPolicy } from "../components";
+import { ButtonLoginSocial } from "../components";
 
-interface SignUpProps {
+interface SignInProps {
   navigation: any;
 }
-const SignUp = (props: SignUpProps) => {
+const SignIn = (props: SignInProps) => {
   const { navigation } = props;
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
 
   const [isShowPass, setIsShowPass] = useState(false);
-  const [isCheckPolicy, setIsCheckPolicy] = useState(false);
   const handleToggleEye = () => setIsShowPass(!isShowPass);
   return (
     <View style={styles.wrapper}>
@@ -30,30 +29,21 @@ const SignUp = (props: SignUpProps) => {
         }}
       />
       <View style={styles.content}>
-        <Text style={styles.title}>Sign Up</Text>
+        <Text style={styles.title}>Welcome Back!</Text>
         <Text style={styles.subTitle}>
-          Already have an account?{" "}
+          Do not have an account?{" "}
           <Text
             style={{ color: theme.colors.primary }}
-            onPress={() => navigation.navigate(SCREENS.LOGIN)}
+            onPress={() => navigation.navigate(SCREENS.SIGNUP)}
           >
-            Sign in
+            Sign up
           </Text>
         </Text>
         <ButtonLoginSocial
-          title="Sign up with google"
+          title="Sign in with google"
           style={{ marginTop: 25, width: "100%" }}
         />
-        <Text
-          style={[
-            styles.subTitle,
-            { marginTop: 15, color: theme.colors.text2 },
-          ]}
-        >
-          Or sign up with email
-        </Text>
         <View style={styles.inputWrapper}>
-          <InputBase label="Full Name *" placeholder="Enter you fullname" />
           <InputBase label="Email *" placeholder="example@gmail.com" />
           <InputBase
             label="Password *"
@@ -67,13 +57,12 @@ const SignUp = (props: SignUpProps) => {
               )
             }
           />
-          <CheckboxPolicy
-            value={isCheckPolicy}
-            onValueChange={(v) => setIsCheckPolicy(v)}
-          />
+          <TouchableOpacity style={styles.textForgotPass}>
+            <Text style={styles.textForgotPass}>Forgot password</Text>
+          </TouchableOpacity>
         </View>
         <ButtonBase
-          title="Create my account"
+          title="Sign in"
           style={{ marginTop: 25 }}
           onPress={() => navigation.navigate(SCREENS.TAB)}
         />
@@ -82,4 +71,4 @@ const SignUp = (props: SignUpProps) => {
   );
 };
 
-export default SignUp;
+export default SignIn;
