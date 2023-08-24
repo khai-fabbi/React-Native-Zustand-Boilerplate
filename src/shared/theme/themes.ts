@@ -20,6 +20,7 @@ export const palette = {
   separator: "rgb(194, 194, 195)",
   highlight: "rgb(199, 198, 203)",
   blackOverlay: "rgba(0,0,0,0.6)",
+  bgBlackOpacity: "rgba(0,0,0,0.3)",
   iconWhite: "#fff",
   iconBlack: "#101214",
   dynamicWhite: "#fff",

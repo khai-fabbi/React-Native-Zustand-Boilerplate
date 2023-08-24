@@ -29,7 +29,10 @@ const App = () => {
 
   return (
     <SafeAreaProvider>
-      <SafeAreaView edges={["top"]} style={{ flex: 1 }}>
+      <SafeAreaView
+        edges={["top"]}
+        style={{ flex: 1, backgroundColor: "#FCFCFD" }}
+      >
         <Navigation />
       </SafeAreaView>
     </SafeAreaProvider>

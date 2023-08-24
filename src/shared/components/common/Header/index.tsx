@@ -1,5 +1,5 @@
-import { View, Image, TouchableOpacity } from "react-native";
-import React, { useEffect, useMemo } from "react";
+import { View, Image, TouchableOpacity, Text } from "react-native";
+import React, { useEffect, useMemo, useState } from "react";
 import Icon, { IconType } from "react-native-dynamic-vector-icons";
 import { useTheme } from "@react-navigation/native";
 import createStyles from "./Header.style";
@@ -11,6 +11,7 @@ import Animated, {
   withSpring,
   withRepeat,
 } from "react-native-reanimated";
+import { ModalBase } from "@shared-components/modal";
 
 const profileURI =
   // eslint-disable-next-line max-len
@@ -22,6 +23,12 @@ const Header = () => {
 
   const progress = useSharedValue(0.5);
   const scale = useSharedValue(0.5);
+
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const reanimatedStyle = useAnimatedStyle(() => {
     return {
@@ -61,6 +68,16 @@ const Header = () => {
         source={{ uri: profileURI }}
         style={styles.profilePicImageStyle}
       />
+
+      <ModalBase
+        title="Modal Title"
+        isVisible={isModalVisible}
+        onCloseModal={toggleModal}
+      >
+        <View>
+          <Text>Content</Text>
+        </View>
+      </ModalBase>
     </View>
   );
 };

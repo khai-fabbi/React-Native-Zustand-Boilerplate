@@ -1,13 +1,16 @@
-/* eslint-disable react/no-unescaped-entities */
 import { View, Text, StyleSheet, Image, ViewProps } from "react-native";
 import React, { useMemo } from "react";
 import { FolderIcon } from "@shared-components/icons";
 import { useTheme, ExtendedTheme } from "@react-navigation/native";
 import { ProgressBase } from "@shared-components/progress";
-interface IProps extends ViewProps {}
-const CardCampaign = ({ style, ...props }: IProps) => {
+import { CardInfo } from "@services/models";
+
+interface IProps extends ViewProps {
+  cardInfo: CardInfo;
+}
+const CardCampaign = ({ style, cardInfo, ...props }: IProps) => {
   const theme = useTheme();
-  //   const { colors } = theme;
+  const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
   return (
     <View style={[styles.wrapper, style]} {...props}>
@@ -15,33 +18,43 @@ const CardCampaign = ({ style, ...props }: IProps) => {
         style={styles.imageYourCampaign}
         alt="Image"
         source={{
-          // eslint-disable-next-line max-len
-          uri: "https://images.unsplash.com/photo-1682695796954-bad0d0f59ff1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+          uri: cardInfo.image,
         }}
       />
       <View style={styles.contentWrapper}>
         <View style={styles.nameCategory}>
           <FolderIcon />
-          <Text style={styles.nameDetailCategory}>Architecture</Text>
+          <Text style={styles.nameDetailCategory}>{cardInfo.categoryName}</Text>
         </View>
-        <Text style={styles.nameCampaingn}>
-          Remake - We Make architecture exhibition
-        </Text>
-        <Text style={styles.description}>
-          Remake - We Make: an exhibition about architecture's social agency in
-          the face of urbanisation
-        </Text>
+        <Text style={styles.nameCampaingn}>{cardInfo.title}</Text>
+        <Text style={styles.description}>{cardInfo.description}</Text>
 
-        <ProgressBase progress={0.5} style={{ marginVertical: 16 }} />
+        <ProgressBase
+          progress={cardInfo.progress}
+          style={{ marginVertical: 16 }}
+        />
         <View style={styles.info}>
           <View style={[{ flex: 1 }]}>
-            <Text style={styles.textInfoItem}>$2,000</Text>
+            <Text style={styles.textInfoItem}>{cardInfo.raised}</Text>
             <Text style={styles.textInfoDescription}>Raised of $2,500</Text>
           </View>
           <View>
-            <Text style={styles.textInfoItem}>17</Text>
+            <Text style={styles.textInfoItem}>{cardInfo.totalBacker}</Text>
             <Text style={styles.textInfoDescription}>Total backers</Text>
           </View>
+        </View>
+        <View style={styles.authorBox}>
+          <Image
+            style={styles.authorImg}
+            resizeMode="cover"
+            source={{
+              uri: cardInfo.author.image,
+            }}
+          />
+          <Text style={styles.authorName}>
+            <Text style={{ color: colors.text3 }}>by</Text>{" "}
+            {cardInfo.author.name}
+          </Text>
         </View>
       </View>
     </View>
@@ -112,6 +125,22 @@ const createStyles = (theme: ExtendedTheme) => {
       color: colors.text4,
       fontSize: 14,
       lineHeight: 22,
+    },
+    authorBox: {
+      marginTop: 15,
+      flexDirection: "row",
+      columnGap: 7,
+      alignItems: "center",
+    },
+    authorImg: {
+      width: 30,
+      aspectRatio: 1,
+      borderRadius: 9999,
+    },
+    authorName: {
+      fontSize: 12,
+      fontWeight: "600",
+      color: colors.text2,
     },
   });
   return styles;

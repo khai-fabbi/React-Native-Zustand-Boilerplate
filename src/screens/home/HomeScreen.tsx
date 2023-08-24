@@ -11,10 +11,10 @@ import createStyles from "./HomeScreen.style";
 import Header from "@shared-components/common/Header";
 import { CardYourCampaign } from "./components";
 import CardCampaign from "./components/CardCampaign";
+import { popularCampaignList, recentCampaignList } from "./mockData";
 const { width } = Dimensions.get("screen");
 
 interface HomeScreenProps {}
-const snapToOffsetArr = [1, 2, 3, 4, 5, 6, 7, 8];
 const HomeScreen: React.FC<HomeScreenProps> = () => {
   const theme = useTheme();
   // const { colors } = theme;
@@ -28,19 +28,44 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
       <View style={styles.contentContainer}>
         <CardYourCampaign />
         <View>
-          <Text style={styles.title}>Popular Campaign </Text>
+          <Text style={styles.title}>Popular Campaign</Text>
           <FlatList
             style={{ width, alignSelf: "center", marginTop: 20 }}
             contentContainerStyle={{ paddingLeft: 24, paddingBottom: 4 }}
             showsHorizontalScrollIndicator={false}
-            data={snapToOffsetArr}
+            data={popularCampaignList}
             keyExtractor={(_, index) => index.toString()}
-            renderItem={(_) => (
-              <CardCampaign style={{ width: 280, marginRight: 24 }} />
+            renderItem={({ item }) => (
+              <CardCampaign
+                cardInfo={item}
+                style={{ width: 280, marginRight: 24 }}
+              />
             )}
-            snapToOffsets={snapToOffsetArr.map((_, index) =>
-              index ? 280 * index + 24 * index : 0,
+            snapToOffsets={new Array(popularCampaignList.length)
+              .fill(0)
+              .map((_, index) => (index ? 280 * index + 24 * index : 0))}
+            decelerationRate={"fast"}
+            horizontal
+            pagingEnabled
+          />
+        </View>
+        <View>
+          <Text style={styles.title}>Recent Campaign</Text>
+          <FlatList
+            style={{ width, alignSelf: "center", marginTop: 20 }}
+            contentContainerStyle={{ paddingLeft: 24, paddingBottom: 4 }}
+            showsHorizontalScrollIndicator={false}
+            data={recentCampaignList}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({ item }) => (
+              <CardCampaign
+                cardInfo={item}
+                style={{ width: 280, marginRight: 24 }}
+              />
             )}
+            snapToOffsets={new Array(recentCampaignList.length)
+              .fill(0)
+              .map((_, index) => (index ? 280 * index + 24 * index : 0))}
             decelerationRate={"fast"}
             horizontal
             pagingEnabled
