@@ -7,9 +7,8 @@ export default (theme: ExtendedTheme) => {
     btnContainer: {
       backgroundColor: colors.primary,
       width: "100%",
-      paddingVertical: 12,
-      paddingHorizontal: 24,
-      margin: 5,
+      paddingVertical: 10,
+      paddingHorizontal: 20,
       borderRadius: 10,
       shadowOffset: {
         width: -10,

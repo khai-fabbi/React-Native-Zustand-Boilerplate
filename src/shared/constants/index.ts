@@ -1,12 +1,12 @@
 // ? Screens
 export const SCREENS = {
-  LOGIN: "Login",
-  SIGNUP: "SignUp",
-  TAB: "TabBar",
-  HOME: "Home",
-  LIST: "List",
-  SEARCH: "Search",
-  NOTIFICATION: "Notification",
-  PROFILE: "Profile",
-  DETAIL: "Detail",
+  LOGIN: "Login" as never,
+  SIGNUP: "SignUp" as never,
+  TAB: "TabBar" as never,
+  HOME: "Home" as never,
+  LIST: "List" as never,
+  SEARCH: "Search" as never,
+  NOTIFICATION: "Notification" as never,
+  PROFILE: "Profile" as never,
+  DETAIL: "Detail" as never,
 };

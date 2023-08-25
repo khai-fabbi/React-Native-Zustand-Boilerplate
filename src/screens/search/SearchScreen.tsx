@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   Dimensions,
   FlatList,
@@ -12,15 +12,26 @@ import createStyles from "./SearchScreen.style";
 import { Header, Pagination } from "@shared-components/common";
 import { recentCampaignList } from "@screens/home/mockData";
 import CardCampaign from "@screens/home/components/CardCampaign";
+import { DropdownSearch } from "./components";
+import { DropDownItem } from "@services/models";
 
 const { width } = Dimensions.get("screen");
 interface SearchScreenProps {}
+
+const dataSortOptions: DropDownItem[] = [
+  { label: "Trending", value: "1" },
+  { label: "Best Match", value: "2" },
+  { label: "Newest", value: "3" },
+];
 
 const SearchScreen: React.FC<SearchScreenProps> = () => {
   const theme = useTheme();
   // const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
 
+  const [sortValue, setSortValue] = useState("");
+
+  const handleChangeSort = (item: DropDownItem) => setSortValue(item.value);
   return (
     <ScrollView
       style={styles.wrapper}
@@ -45,7 +56,11 @@ const SearchScreen: React.FC<SearchScreenProps> = () => {
         </View>
         <View style={styles.resultBox}>
           <Text style={styles.textResult}>524 Projects Found</Text>
-          <View />
+          <DropdownSearch
+            options={dataSortOptions}
+            value={sortValue}
+            onChangeValue={handleChangeSort}
+          />
         </View>
         <FlatList
           style={{ width, alignSelf: "center" }}

@@ -7,6 +7,8 @@ import FolderIcon from "./FolderIcon";
 import CloseIcon from "./CloseIcon";
 import ArrowLeftIcon from "./ArrowLeftIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
+import EditIcon from "./EditIcon";
+import CalendarIcon from "./CalendarIcon";
 
 export {
   LogoIcon,
@@ -18,4 +20,6 @@ export {
   CloseIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
+  EditIcon,
+  CalendarIcon,
 };

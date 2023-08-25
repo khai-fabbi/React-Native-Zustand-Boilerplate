@@ -1,34 +1,42 @@
 import { ExtendedTheme } from "@react-navigation/native";
-import { ViewStyle, StyleSheet } from "react-native";
-
-interface Style {
-  container: ViewStyle;
-  userContainer: ViewStyle;
-  userButton: ViewStyle;
-}
+import { StyleSheet } from "react-native";
 
 export default (theme: ExtendedTheme) => {
   const { colors } = theme;
-  return StyleSheet.create<Style>({
-    container: {
+  return StyleSheet.create({
+    wrapper: {
       flex: 1,
-      backgroundColor: colors.background,
-      alignItems: "center",
-      justifyContent: "center",
+      width: "100%",
+      paddingHorizontal: 24,
+      paddingTop: 2,
     },
-    userContainer: {
-      marginTop: 16,
-      alignItems: "center",
-      justifyContent: "center",
+    contentContainer: {
+      marginTop: 20,
+      paddingHorizontal: 20,
+      paddingVertical: 25,
+      backgroundColor: colors.white,
+      borderRadius: 10,
     },
-    userButton: {
-      height: 35,
-      width: 150,
-      marginTop: 32,
-      borderRadius: 16,
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#135",
+    title: {
+      fontSize: 18,
+      fontWeight: "700",
+      lineHeight: 30,
+    },
+    subTitle: {
+      marginTop: 4,
+      fontSize: 12,
+      lineHeight: 18,
+      color: colors.text3,
+    },
+    editWrapper: {
+      marginTop: 30,
+      rowGap: 30,
+    },
+    infoWrapper: {},
+    titleInfo: {
+      fontSize: 15,
+      fontWeight: "600",
+      lineHeight: 26,
     },
   });
 };

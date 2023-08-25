@@ -13,7 +13,13 @@ interface InputProps extends TextInputProps {
   iconRight?: ReactNode;
 }
 
-const InputBase = ({ label, style, iconRight, ...props }: InputProps) => {
+const InputBase = ({
+  label,
+  style,
+  iconRight,
+  editable = true,
+  ...props
+}: InputProps) => {
   const theme = useTheme();
   const styles = useMemo(() => createStyles(theme), [theme]);
   return (
@@ -22,7 +28,16 @@ const InputBase = ({ label, style, iconRight, ...props }: InputProps) => {
       <View style={{ position: "relative" }}>
         <TextInput
           {...props}
-          style={[styles.input, style, { ...(iconRight && styles.pr40) }]}
+          editable={editable}
+          style={[
+            styles.input,
+            !editable && {
+              backgroundColor: theme.colors.bgTextInputDisable,
+              shadowColor: theme.colors.transparent,
+            },
+            style,
+            { ...(iconRight && styles.pr40) },
+          ]}
           placeholderTextColor={theme.colors.text4}
         />
         <TouchableOpacity style={styles.iconRight}>
@@ -39,9 +54,9 @@ const createStyles = (theme: ExtendedTheme) => {
   const { colors } = theme;
   const styles = StyleSheet.create({
     wrapper: {
-      width: "100%",
       flexDirection: "column",
       rowGap: 10,
+      margin: 4,
     },
     textLabel: {
       color: colors.text2,
@@ -51,8 +66,8 @@ const createStyles = (theme: ExtendedTheme) => {
       width: "100%",
       fontSize: 14,
       fontWeight: "500",
-      borderColor: colors.borderColor,
-      borderWidth: 1,
+      // borderColor: colors.borderColor,
+      // borderWidth: 1,
       backgroundColor: colors.white,
       color: colors.text,
       paddingHorizontal: 24,

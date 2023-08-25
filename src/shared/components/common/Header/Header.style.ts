@@ -40,8 +40,8 @@ export default (theme: ExtendedTheme) => {
     },
     btnSearch: {
       position: "absolute",
-      right: 8,
-      top: 8,
+      right: 12,
+      top: 12,
       paddingHorizontal: 14,
       paddingVertical: 8,
       backgroundColor: colors.primary,

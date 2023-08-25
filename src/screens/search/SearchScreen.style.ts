@@ -35,6 +35,8 @@ export default (theme: ExtendedTheme) => {
       flexDirection: "row",
       columnGap: 10,
       marginVertical: 25,
+      justifyContent: "space-between",
+      alignItems: "center",
     },
     textResult: {
       fontSize: 16,

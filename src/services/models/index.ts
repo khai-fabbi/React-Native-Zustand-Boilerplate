@@ -16,3 +16,8 @@ export interface CardInfo {
     name: string;
   };
 }
+
+export interface DropDownItem {
+  label: string;
+  value: string;
+}

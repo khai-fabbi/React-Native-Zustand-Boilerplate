@@ -29,6 +29,7 @@ export const palette = {
   transparent: "transparent",
   calpyse: "#2b7488",
   bgProgress: "#EFEFEF",
+  bgTextInputDisable: "#F6F6F6",
 };
 
 export const LightTheme: ExtendedTheme = {
