@@ -6,9 +6,15 @@ import { ProgressBase } from "@shared-components/progress";
 import { CardInfo } from "@services/models";
 
 interface IProps extends ViewProps {
+  isMyCard?: boolean;
   cardInfo: CardInfo;
 }
-const CardCampaign = ({ style, cardInfo, ...props }: IProps) => {
+const CardCampaign = ({
+  style,
+  cardInfo,
+  isMyCard = false,
+  ...props
+}: IProps) => {
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
@@ -21,7 +27,9 @@ const CardCampaign = ({ style, cardInfo, ...props }: IProps) => {
           uri: cardInfo.image,
         }}
       />
-      <View style={styles.contentWrapper}>
+      <View
+        style={[styles.contentWrapper, isMyCard && { paddingHorizontal: 0 }]}
+      >
         <View style={styles.nameCategory}>
           <FolderIcon />
           <Text style={styles.nameDetailCategory}>{cardInfo.categoryName}</Text>
@@ -42,20 +50,29 @@ const CardCampaign = ({ style, cardInfo, ...props }: IProps) => {
             <Text style={styles.textInfoItem}>{cardInfo.totalBacker}</Text>
             <Text style={styles.textInfoDescription}>Total backers</Text>
           </View>
+
+          {isMyCard && (
+            <View>
+              <Text style={styles.textInfoItem}>{cardInfo?.dayLeft}</Text>
+              <Text style={styles.textInfoDescription}>Days left</Text>
+            </View>
+          )}
         </View>
-        <View style={styles.authorBox}>
-          <Image
-            style={styles.authorImg}
-            resizeMode="cover"
-            source={{
-              uri: cardInfo.author.image,
-            }}
-          />
-          <Text style={styles.authorName}>
-            <Text style={{ color: colors.text3 }}>by</Text>{" "}
-            {cardInfo.author.name}
-          </Text>
-        </View>
+        {!isMyCard && (
+          <View style={styles.authorBox}>
+            <Image
+              style={styles.authorImg}
+              resizeMode="cover"
+              source={{
+                uri: cardInfo.author?.image,
+              }}
+            />
+            <Text style={styles.authorName}>
+              <Text style={{ color: colors.text3 }}>by</Text>{" "}
+              {cardInfo.author?.name}
+            </Text>
+          </View>
+        )}
       </View>
     </View>
   );

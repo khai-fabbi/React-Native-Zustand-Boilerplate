@@ -1,10 +1,11 @@
 import * as React from "react";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path, SvgProps } from "react-native-svg";
 
-function CalendarIcon(props: any) {
+interface IProps extends SvgProps {}
+function CalendarIcon(props: IProps) {
   return (
     <Svg
-      xmlns="http://www.w3.org/2000/svg"
+      // xmlns="http://www.w3.org/2000/svg"
       width={24}
       height={24}
       viewBox="0 0 24 24"

@@ -16,7 +16,7 @@ import SearchScreen from "@screens/search/SearchScreen";
 import DetailScreen from "@screens/detail/DetailScreen";
 import ProfileScreen from "@screens/profile/ProfileScreen";
 import NotificationScreen from "@screens/notification/NotificationScreen";
-import ListCard from "@screens/list/ListCard";
+import Campaign from "@screens/list/Campaign";
 import SignIn from "@screens/Account/SignIn";
 import SignUp from "@screens/Account/SignUp";
 
@@ -86,7 +86,7 @@ const Navigation = () => {
         })}
       >
         <Tab.Screen name={SCREENS.HOME} component={HomeScreen} />
-        <Tab.Screen name={SCREENS.LIST} component={ListCard} />
+        <Tab.Screen name={SCREENS.LIST} component={Campaign} />
         <Tab.Screen name={SCREENS.SEARCH} component={SearchScreen} />
         <Tab.Screen
           name={SCREENS.NOTIFICATION}

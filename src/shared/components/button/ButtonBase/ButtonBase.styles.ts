@@ -7,8 +7,8 @@ export default (theme: ExtendedTheme) => {
     btnContainer: {
       backgroundColor: colors.primary,
       width: "100%",
-      paddingVertical: 10,
-      paddingHorizontal: 20,
+      paddingVertical: 12,
+      paddingHorizontal: 12,
       borderRadius: 10,
       shadowOffset: {
         width: -10,
@@ -21,7 +21,7 @@ export default (theme: ExtendedTheme) => {
     },
     btnText: {
       color: colors.white,
-      lineHeight: 26,
+      // lineHeight: 26,
       fontSize: 16,
       fontWeight: "600",
     },

@@ -9,6 +9,7 @@ import ArrowLeftIcon from "./ArrowLeftIcon";
 import ArrowRightIcon from "./ArrowRightIcon";
 import EditIcon from "./EditIcon";
 import CalendarIcon from "./CalendarIcon";
+import PlusIcon from "./PlusIcon";
 
 export {
   LogoIcon,
@@ -22,4 +23,5 @@ export {
   ArrowRightIcon,
   EditIcon,
   CalendarIcon,
+  PlusIcon,
 };

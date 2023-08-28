@@ -8,7 +8,6 @@ export default (theme: ExtendedTheme) => {
       flex: 1,
       width: "100%",
       paddingHorizontal: 24,
-      paddingTop: 2,
     },
     contentContainer: {
       marginTop: 20,

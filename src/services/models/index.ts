@@ -11,7 +11,8 @@ export interface CardInfo {
   raised: string;
   progress: number;
   totalBacker: number;
-  author: {
+  dayLeft?: number;
+  author?: {
     image: string;
     name: string;
   };

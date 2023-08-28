@@ -8,6 +8,7 @@ import { ButtonEditProfile } from "./components";
 import { ButtonBase } from "@shared-components/button";
 import { InputBase } from "@shared-components/input";
 import { CalendarIcon } from "@shared-components/icons";
+import { ModalTimePicker } from "@shared-components/modal";
 
 interface ProfileScreenProps {}
 
@@ -35,7 +36,9 @@ const formValueInfo: FormValueInfoItem[] = [
     name: "phoneNumber",
   },
 ];
-type InfoValueType = { [key in FormInfoName]: string };
+type InfoValueType = {
+  [key in FormInfoName]: string;
+};
 const ProfileScreen: React.FC<ProfileScreenProps> = () => {
   const theme = useTheme();
   // const { colors } = theme;
@@ -43,14 +46,19 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
   const [infoValue, setInfoValue] = useState<InfoValueType>({
     firstName: "Quang Khai",
     lastName: "Vu",
-    dateOfBirth: "22-12-1998",
+    dateOfBirth: "1998-12-22",
     phoneNumber: "0339365888",
   });
   const [isEditAccount, setIsEditAccount] = useState(false);
   const [isChangedAccount, setIsChangedAccount] = useState(false);
+
+  const [isOpenTimePicker, setIsOpenTimePicker] = useState(false);
   const handleChangeValueInfo = (value: string, name: FormInfoName) => {
     if (!isChangedAccount) setIsChangedAccount(true);
     setInfoValue({ ...infoValue, [name]: value });
+  };
+  const handleChangeDateOfBirth = (date: Date) => {
+    setInfoValue({ ...infoValue, dateOfBirth: date.toISOString() });
   };
   return (
     <ScrollView
@@ -87,8 +95,19 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
                   autoFocus={isEditAccount && index === 0}
                   editable={isEditAccount}
                   label={item.label}
-                  value={infoValue[item.name]}
-                  iconRight={<CalendarIcon />}
+                  value={
+                    item.name !== "dateOfBirth"
+                      ? infoValue[item.name]
+                      : infoValue[item.name].split("T")[0]
+                  }
+                  iconRight={
+                    item.name === "dateOfBirth" && (
+                      <CalendarIcon
+                        disabled={!isEditAccount}
+                        onPress={() => setIsOpenTimePicker(true)}
+                      />
+                    )
+                  }
                   onChangeText={(text) =>
                     handleChangeValueInfo(text, item.name)
                   }
@@ -121,6 +140,13 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
           </View>
         </View>
       </View>
+      <ModalTimePicker
+        title="Date of Birth"
+        isVisible={isOpenTimePicker}
+        handleClose={() => setIsOpenTimePicker(false)}
+        dayOfBirth={new Date(infoValue.dateOfBirth)}
+        onSelect={handleChangeDateOfBirth}
+      />
     </ScrollView>
   );
 };

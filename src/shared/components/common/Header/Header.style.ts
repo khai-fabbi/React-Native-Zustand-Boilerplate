@@ -15,11 +15,11 @@ export default (theme: ExtendedTheme) => {
       columnGap: 24,
     },
     inputWrapper: {
-      flexGrow: 1,
+      flex: 1,
       position: "relative",
     },
     inputCustom: {
-      paddingRight: 48,
+      paddingRight: 60,
       borderRadius: 9999,
       backgroundColor: colors.white,
       borderColor: colors.transparent,
