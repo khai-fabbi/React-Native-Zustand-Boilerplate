@@ -1,11 +1,10 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
 /**
  * ? Local Imports
  */
 import createStyles from "./NotificationScreen.style";
-import Text from "@shared-components/text-wrapper/TextWrapper";
 
 interface NotificationScreenProps {}
 
@@ -16,9 +15,7 @@ const NotificationScreen: React.FC<NotificationScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <Text h1 color={colors.text}>
-        Notification
-      </Text>
+      <Text style={{ color: colors.text }}>Detail Screen</Text>
     </View>
   );
 };

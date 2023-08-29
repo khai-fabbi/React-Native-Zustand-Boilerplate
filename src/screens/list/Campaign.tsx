@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useTheme } from "@react-navigation/native";
+import { useNavigation, useTheme } from "@react-navigation/native";
 import createStyles from "./Campaign.style";
 import Header from "@shared-components/common/Header";
 import {
@@ -13,14 +13,16 @@ import { ButtonBase } from "@shared-components/button";
 import { PlusIcon } from "@shared-components/icons";
 import CardCampaign from "@screens/home/components/CardCampaign";
 import { yourCampaignList } from "./mock/MockData";
+import { SCREENS } from "@shared-constants";
 
 interface CampaignProps {}
 
 const Campaign: React.FC<CampaignProps> = () => {
+  const navigation = useNavigation();
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
-
+  const handleNavigate = () => navigation.navigate(SCREENS.CREATE_CAMPAIGN);
   return (
     <ScrollView
       style={styles.container}
@@ -29,7 +31,10 @@ const Campaign: React.FC<CampaignProps> = () => {
       <Header />
       <View style={styles.contentContainer}>
         <View style={styles.createCampaignBox}>
-          <TouchableOpacity style={styles.iconPlusWrapper}>
+          <TouchableOpacity
+            style={styles.iconPlusWrapper}
+            onPress={handleNavigate}
+          >
             <PlusIcon />
           </TouchableOpacity>
           <View style={styles.createCampaignBoxRight}>
@@ -45,6 +50,7 @@ const Campaign: React.FC<CampaignProps> = () => {
               title="Create Campaign"
               style={styles.customButtonSecondary}
               textStyle={{ color: colors.secondary }}
+              onPress={handleNavigate}
             />
           </View>
         </View>

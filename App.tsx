@@ -6,8 +6,8 @@ import SplashScreen from "react-native-splash-screen";
  * ? Local Imports
  */
 import Navigation from "./src/navigation";
-import { isAndroid } from "@freakycoder/react-native-helpers";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { isAndroid } from "@theme/scale";
 
 LogBox.ignoreAllLogs();
 

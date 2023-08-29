@@ -1,22 +1,24 @@
 import { ExtendedTheme, useTheme } from "@react-navigation/native";
 import React, { ReactNode, useMemo } from "react";
 import {
-  TextInput,
   StyleSheet,
-  TextInputProps,
-  View,
   Text,
+  TextInput,
+  TextInputProps,
   TouchableOpacity,
+  View,
 } from "react-native";
 interface InputProps extends TextInputProps {
   label?: string;
   iconRight?: ReactNode;
+  helpText?: string;
 }
 
 const InputBase = ({
   label,
   style,
   iconRight,
+  helpText,
   editable = true,
   ...props
 }: InputProps) => {
@@ -44,6 +46,7 @@ const InputBase = ({
           {iconRight}
         </TouchableOpacity>
       </View>
+      {helpText && <Text style={styles.helpText}>{helpText}</Text>}
     </View>
   );
 };
@@ -60,6 +63,13 @@ const createStyles = (theme: ExtendedTheme) => {
     },
     textLabel: {
       color: colors.text2,
+      fontWeight: "500",
+    },
+    helpText: {
+      color: colors.text3,
+      fontWeight: "500",
+      fontSize: 12,
+      lineHeight: 18,
     },
     input: {
       position: "relative",

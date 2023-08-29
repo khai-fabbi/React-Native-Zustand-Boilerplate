@@ -6,15 +6,24 @@ import CheckBox from "@react-native-community/checkbox";
 import { DropDownItem } from "@services/models";
 
 interface IProps {
+  label?: string;
   value: string;
   options: DropDownItem[];
   onChangeValue: (item: DropDownItem) => void;
   style?: ViewStyle;
+  placeholder?: string;
 }
 
-const DropdownSearch = ({ style, value, options, onChangeValue }: IProps) => {
+const DropdownPrimary = ({
+  style,
+  value,
+  options,
+  onChangeValue,
+  placeholder = "",
+  label,
+}: IProps) => {
   const theme = useTheme();
-  const styles = useMemo(() => createStyles(theme), [theme]);
+  const styles = useMemo(() => createDropdownStyles(theme), [theme]);
 
   const renderItem = (item: DropDownItem) => {
     return (
@@ -33,46 +42,58 @@ const DropdownSearch = ({ style, value, options, onChangeValue }: IProps) => {
   };
 
   return (
-    <Dropdown
-      style={styles.dropdown}
-      containerStyle={{ borderRadius: 5, overflow: "hidden" }}
-      placeholderStyle={styles.placeholderStyle}
-      selectedTextStyle={styles.selectedTextStyle}
-      inputSearchStyle={styles.inputSearchStyle}
-      iconStyle={styles.iconStyle}
-      data={options}
-      search={false}
-      maxHeight={300}
-      labelField="label"
-      valueField="value"
-      placeholder="Select item"
-      searchPlaceholder="Search..."
-      value={value}
-      onChange={onChangeValue}
-      renderItem={renderItem}
-    />
+    <View style={styles.container}>
+      {label && <Text style={styles.textLabel}>{label}</Text>}
+      <Dropdown
+        style={styles.dropdown}
+        containerStyle={{ borderRadius: 5, overflow: "hidden", padding: 0 }}
+        placeholderStyle={styles.placeholderStyle}
+        selectedTextStyle={styles.selectedTextStyle}
+        inputSearchStyle={styles.inputSearchStyle}
+        data={options}
+        search
+        maxHeight={300}
+        labelField="label"
+        valueField="value"
+        placeholder={placeholder || "Select item"}
+        searchPlaceholder="Search..."
+        value={value}
+        onChange={onChangeValue}
+        renderItem={renderItem}
+      />
+    </View>
   );
 };
 
-export default DropdownSearch;
+export default DropdownPrimary;
 
-const createStyles = (theme: ExtendedTheme) => {
+const createDropdownStyles = (theme: ExtendedTheme) => {
   const { colors } = theme;
   const styles = StyleSheet.create({
+    container: {
+      flexDirection: "column",
+      rowGap: 10,
+      margin: 4,
+    },
+    textLabel: {
+      color: colors.text2,
+      fontWeight: "500",
+    },
     dropdown: {
       backgroundColor: colors.white,
-      minWidth: 120,
-      borderRadius: 5,
-      paddingHorizontal: 8,
-      paddingVertical: 10,
+      color: colors.text,
+      paddingHorizontal: 24,
+      paddingVertical: 15,
+      borderRadius: 10,
       shadowColor: colors.black,
       shadowOffset: {
         width: 0,
         height: 1,
       },
-      shadowOpacity: 0.2,
-      shadowRadius: 1.41,
-      elevation: 2,
+      shadowOpacity: 0.22,
+      shadowRadius: 2.22,
+
+      elevation: 3,
     },
     checkbox: {
       marginRight: 10,
@@ -92,22 +113,24 @@ const createStyles = (theme: ExtendedTheme) => {
       color: colors.text3,
     },
     placeholderStyle: {
+      margin: 0,
       fontSize: 14,
-      fontWeight: "600",
-      color: colors.text3,
+      fontWeight: "500",
+      color: colors.text4,
     },
     selectedTextStyle: {
       fontSize: 14,
-      fontWeight: "600",
-      color: colors.text2,
+      fontWeight: "500",
+      color: colors.text,
     },
-    iconStyle: {
-      width: 20,
-      height: 20,
-    },
+    // iconStyle: {
+    //   width: 20,
+    //   height: 20,
+    // },
     inputSearchStyle: {
       height: 40,
       fontSize: 14,
+      borderRadius: 5,
     },
   });
   return styles;

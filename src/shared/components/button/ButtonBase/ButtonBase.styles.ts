@@ -7,7 +7,7 @@ export default (theme: ExtendedTheme) => {
     btnContainer: {
       backgroundColor: colors.primary,
       width: "100%",
-      paddingVertical: 12,
+      paddingVertical: 15,
       paddingHorizontal: 12,
       borderRadius: 10,
       shadowOffset: {
@@ -18,6 +18,7 @@ export default (theme: ExtendedTheme) => {
       shadowRadius: 10,
       elevation: 5,
       alignItems: "center",
+      justifyContent: "center",
     },
     btnText: {
       color: colors.white,

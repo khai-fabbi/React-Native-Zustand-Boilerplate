@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-native-element-dropdown/src/components/Dropdown/styles.ts b/node_modules/react-native-element-dropdown/src/components/Dropdown/styles.ts
+index 751c62a..f5cabbc 100644
+--- a/node_modules/react-native-element-dropdown/src/components/Dropdown/styles.ts
++++ b/node_modules/react-native-element-dropdown/src/components/Dropdown/styles.ts
+@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
+     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+     justifyContent: 'space-between',
+     alignItems: 'center',
+-    height: 35,
++    // height: 35,
+   },
+   title: {
+     marginVertical: 5,

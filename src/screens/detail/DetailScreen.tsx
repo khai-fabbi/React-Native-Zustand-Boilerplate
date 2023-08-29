@@ -1,13 +1,10 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { useTheme } from "@react-navigation/native";
-import * as NavigationService from "react-navigation-helpers";
 /**
  * ? Local Imports
  */
 import createStyles from "./DetailScreen.style";
-import Text from "@shared-components/text-wrapper/TextWrapper";
-import RNBounceable from "@freakycoder/react-native-bounceable";
 
 interface DetailScreenProps {}
 
@@ -18,15 +15,7 @@ const DetailScreen: React.FC<DetailScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <Text h1 color={colors.text}>
-        Detail Screen
-      </Text>
-      <RNBounceable
-        style={styles.buttonStyle}
-        onPress={() => NavigationService.goBack()}
-      >
-        <Text color={colors.white}>Go back to Home</Text>
-      </RNBounceable>
+      <Text style={{ color: colors.text }}>Detail Screen</Text>
     </View>
   );
 };
