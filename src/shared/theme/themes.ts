@@ -30,6 +30,7 @@ export const palette = {
   calpyse: "#2b7488",
   bgProgress: "#EFEFEF",
   bgTextInputDisable: "#F6F6F6",
+  primary80: "#D2F2E3",
 };
 
 export const LightTheme: ExtendedTheme = {

@@ -6,7 +6,7 @@ export default (theme: ExtendedTheme) => {
   const styles = StyleSheet.create({
     btnContainer: {
       backgroundColor: colors.primary,
-      width: "100%",
+      // width: "100%",
       paddingVertical: 15,
       paddingHorizontal: 12,
       borderRadius: 10,

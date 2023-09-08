@@ -10,6 +10,7 @@ export const SCREENS = {
   PROFILE: "Profile" as never,
   CREATE_CAMPAIGN: "CreateCampaign" as never,
   DETAIL: "Detail" as never,
+  CHECKOUT: "Checkout" as never,
 };
 
 export enum FormDataTypeEnum {

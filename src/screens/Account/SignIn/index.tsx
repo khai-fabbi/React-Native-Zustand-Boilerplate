@@ -63,7 +63,7 @@ const SignIn = (props: SignInProps) => {
         </View>
         <ButtonBase
           title="Sign in"
-          style={{ marginTop: 25 }}
+          style={{ marginTop: 25, width: "100%" }}
           onPress={() => navigation.navigate(SCREENS.TAB)}
         />
       </View>

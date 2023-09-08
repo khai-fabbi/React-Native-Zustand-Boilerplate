@@ -74,7 +74,7 @@ const SignUp = (props: SignUpProps) => {
         </View>
         <ButtonBase
           title="Create my account"
-          style={{ marginTop: 25 }}
+          style={{ marginTop: 25, width: "100%" }}
           onPress={() => navigation.navigate(SCREENS.TAB)}
         />
       </View>

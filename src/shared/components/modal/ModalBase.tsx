@@ -1,5 +1,6 @@
 import {
   Dimensions,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -39,7 +40,7 @@ const ModalBase = ({
       useNativeDriverForBackdrop
       hideModalContentWhileAnimating
     >
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={styles.headerModal}>
           {typeof title === "string" ? (
             <Text style={styles.titleModal}>{title}</Text>
@@ -51,7 +52,7 @@ const ModalBase = ({
           </TouchableOpacity>
         </View>
         <View style={styles.bodyModal}>{children}</View>
-      </View>
+      </ScrollView>
     </Modal>
   );
 };
@@ -65,6 +66,7 @@ const createStyles = (theme: ExtendedTheme) => {
       flex: 1,
     },
     container: {
+      maxHeight: "75%",
       position: "relative",
       backgroundColor: colors.white,
       minHeight: 100,

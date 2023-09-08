@@ -20,6 +20,7 @@ import Campaign from "@screens/list/Campaign";
 import SignIn from "@screens/Account/SignIn";
 import SignUp from "@screens/Account/SignUp";
 import CampaignAdd from "@screens/CampaignAdd/CampaignAdd";
+import { Checkout } from "@screens/Payment";
 
 // ? If you want to use stack or tab or both
 const Tab = createBottomTabNavigator();
@@ -114,6 +115,7 @@ const Navigation = () => {
         <Stack.Screen name={SCREENS.SIGNUP} component={SignUp} />
         <Stack.Screen name={SCREENS.TAB} component={TabNavigation} />
         <Stack.Screen name={SCREENS.CREATE_CAMPAIGN} component={CampaignAdd} />
+        <Stack.Screen name={SCREENS.CHECKOUT} component={Checkout} />
         <Stack.Screen name={SCREENS.DETAIL}>
           {(props) => <DetailScreen {...props} />}
         </Stack.Screen>

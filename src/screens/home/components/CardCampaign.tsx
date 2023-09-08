@@ -1,9 +1,21 @@
-import { View, Text, StyleSheet, Image, ViewProps } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ViewProps,
+  TouchableOpacity,
+} from "react-native";
 import React, { useMemo } from "react";
 import { FolderIcon } from "@shared-components/icons";
-import { useTheme, ExtendedTheme } from "@react-navigation/native";
+import {
+  useTheme,
+  ExtendedTheme,
+  useNavigation,
+} from "@react-navigation/native";
 import { ProgressBase } from "@shared-components/progress";
 import { CardInfo } from "@services/models";
+import { SCREENS } from "@shared-constants";
 
 interface IProps extends ViewProps {
   isMyCard?: boolean;
@@ -15,18 +27,21 @@ const CardCampaign = ({
   isMyCard = false,
   ...props
 }: IProps) => {
+  const navigation = useNavigation();
   const theme = useTheme();
   const { colors } = theme;
   const styles = useMemo(() => createStyles(theme), [theme]);
   return (
     <View style={[styles.wrapper, style]} {...props}>
-      <Image
-        style={styles.imageYourCampaign}
-        alt="Image"
-        source={{
-          uri: cardInfo.image,
-        }}
-      />
+      <TouchableOpacity onPress={() => navigation.navigate(SCREENS.DETAIL)}>
+        <Image
+          style={styles.imageYourCampaign}
+          alt="Image"
+          source={{
+            uri: cardInfo.image,
+          }}
+        />
+      </TouchableOpacity>
       <View
         style={[styles.contentWrapper, isMyCard && { paddingHorizontal: 0 }]}
       >
